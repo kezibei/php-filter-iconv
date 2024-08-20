@@ -2,7 +2,7 @@
 修改自
 https://github.com/ambionics/cnext-exploits
 
-##php-filter-iconv.py用法
+## php-filter-iconv.py用法
 通过任意文件下载获取目标的/proc/self/maps和libc-2.x.so，在本机和php-filter-iconv.py放在同目录，然后运行脚本即可生成php://filter/的RCE payload，详细参数调整如下代码即可。
 ```
 .......
@@ -24,7 +24,7 @@ libc_path = './libc-2.23.so'
 .......
 ```
 
-##php-filter-iconv.php用法
+## php-filter-iconv.php用法
 
 直接上传到已经获得webshell的服务器进行bypass disable_functions，然后访问如下链接检测环境
 
